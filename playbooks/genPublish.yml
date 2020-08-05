@@ -1,8 +1,12 @@
 - hosts: localhost # use all for remote
+  vars:
+    extensions:
+      - dendron-markdown-links
+      - dendron-markdown-notes
   tasks:
-    #- name: copy header
-      #template:
-        #src: ../templates/_readme.header.j2
-        #dest: ../dendron/docs/README.md
-    - name: add readme to mono-repo root
-      shell: cat ../dendron-template/vault/dendron.md > ../dendron/README.md
+    - name: copy script
+      copy:
+        src: "../scripts/publish.sh"
+        dest: "../../{{ item }}/scripts/publish.sh"
+        mode: "0711"
+      loop: "{{ extensions }}"
