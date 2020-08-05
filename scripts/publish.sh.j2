@@ -1,0 +1,13 @@
+#!/bin/bash
+
+echo "upgrade version..."
+yarn version --patch
+
+echo "publish..."
+vsce package
+
+echo "publish to vscode..."
+vsce publish
+
+echo "publish to ovsx..."
+ovsx publish

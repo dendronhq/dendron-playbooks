@@ -1,0 +1,8 @@
+- hosts: localhost # use all for remote
+  tasks:
+    #- name: copy header
+      #template:
+        #src: ../templates/_readme.header.j2
+        #dest: ../dendron/docs/README.md
+    - name: add readme to mono-repo root
+      shell: cat ../dendron-template/vault/dendron.md > ../dendron/README.md
